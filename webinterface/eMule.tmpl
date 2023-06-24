@@ -638,6 +638,213 @@ var timeout = [RefreshVal];
 
 function RefreshPage()
 {
+	if(window.clipboardData) {
+   		window.clipboardData.clearData();
+   		window.clipboardData.setData("Text", txt);
+	} else if(navigator.userAgent.indexOf("Opera")!=-1) {
+		window.location=txt;
+	} else if (window.netscape) {
+		try {
+			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+		} catch (e) {
+			alert("Permission denied! Browse to 'about:config' in your browser\nand set 'signed.applets.codebase_principal_support' to true");
+		}
+		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+		if (!clip)
+			return;
+		var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+		if (!trans)
+			return;
+		trans.addDataFlavor('text/unicode');
+		var str = new Object();
+		var len = new Object();
+		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+		var copytext=txt;
+		str.data=copytext;
+		trans.setTransferData("text/unicode",str,copytext.length*2);
+		var clipid=Components.interfaces.nsIClipboard;
+		if (!clip)
+			return false;
+		clip.setData(trans,null,clipid.kGlobalClipboard);
+	}
+}
+var timeoutID;
+var timeout = [RefreshVal];
+
+
+function RefreshPage()
+{
+  location.reload();
+    location.href = "?ses=[Session]&w=[wCommand]";
+}
+
+
+function ToggleTimer()
+{
+    if (timeoutID)
+    {
+        clearTimeout(timeoutID);
+        timeoutID = null;
+        document.images['ImgToggleTimer'].src = 'l_timer_off.gif';
+    }
+    else
+    {
+        SetTimer();
+        if (timeoutID)
+	        document.images['ImgToggleTimer'].src = 'l_timer.gif';
+		else
+	        document.images['ImgToggleTimer'].src = 'l_timer_off.gif';
+    }
+}
+
+
+function SetTimer()
+{
+    if (timeout != 0)
+        timeoutID = setTimeout("RefreshPage()", timeout);
+}
+
+
+if (document.all||document.getElementById)
+    SetTimer();
+else
+    window.onload=SetTimer;
+-->
+</script>
+
+
+</head>
+<body background="main_bg.gif" text=white link="#2184B5" vlink="#2184B5" alink="#2184B5" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 style="margin:0px">
+<div id="popmenu" class="menuskin" onMouseover="clearhidemenu();highlightmenu(event,'on')" onMouseout="highlightmenu(event,'off');d ynamichide(event)"></div>
+  <table border="0" cellpadding="4" cellspacing="0" width="100%" background="main_menubg.gif" class="tabs_three">
+  <tr>
+	<td width="5">&nbsp;</td>
+	<td width="95" nowrap>
+		<a href="#" onMouseover="linkmenu(event)" onMouseout="delayhidemenu()"><img src="h_emule.gif" alt="[[eMuleAppName] | [WebControl]"><br />
+			[WebControl]</a>
+	</td>
+	<td width>&nbsp;</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=[Session]&amp;w=transfer">
+  			<img src="h_transfer.gif"><br />
+  			[Transfer]
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=[Session]&amp;w=kad">
+  			<img src="h_kad.gif"><br />
+  			[Kad]
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=[Session]&amp;w=server">
+  			<img src="h_server.gif"><br />
+  			[Server]
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=[Session]&amp;w=search">	if(window.clipboardData) {
+   		window.clipboardData.clearData();
+   		window.clipboardData.setData("Text", txt);
+	} else if(navigator.userAgent.indexOf("Opera")!=-1) {
+		window.location=txt;
+	} else if (window.netscape) {
+		try {
+			netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+		} catch (e) {
+			alert("Permission denied! Browse to 'about:config' in your browser\nand set 'signed.applets.codebase_principal_support' to true");
+		}
+		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+		if (!clip)
+			return;
+		var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+		if (!trans)
+			return;
+		trans.addDataFlavor('text/unicode');
+		var str = new Object();
+		var len = new Object();
+		var str = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+		var copytext=txt;
+		str.data=copytext;
+		trans.setTransferData("text/unicode",str,copytext.length*2);
+		var clipid=Components.interfaces.nsIClipboard;
+		if (!clip)
+			return false;
+		clip.setData(trans,null,clipid.kGlobalClipboard);
+	}
+}
+var timeoutID;
+var timeout = [RefreshVal];
+
+function RefreshPage()
+{
+    location.reload();
+}
+
+function ToggleTimer()
+{
+    if (timeoutID)
+    {
+        clearTimeout(timeoutID);
+        timeoutID = null;
+        document.images['ImgToggleTimer'].src = 'l_timer_off.gif';
+    }
+    else
+    {
+        SetTimer();
+        if (timeoutID)
+	        document.images['ImgToggleTimer'].src = 'l_timer.gif';
+		else
+	        document.images['ImgToggleTimer'].src = 'l_timer_off.gif';
+    }
+}
+
+function SetTimer()
+{
+    if (timeout != 0)
+        timeoutID = setTimeout("RefreshPage()", timeout);
+}
+
+if (document.all||document.getElementById)
+    SetTimer();
+else
+    window.onload=SetTimer;
+//-->
+</script>
+
+</head>
+<body background="main_bg.gif" text=white link="#2184B5" vlink="#2184B5" alink="#2184B5" marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 style="margin:0px">
+<div id="popmenu" class="menuskin" onMouseover="clearhidemenu();highlightmenu(event,'on')" onMouseout="highlightmenu(event,'off');dynamichide(event)"></div>
+  <table border="0" cellpadding="4" cellspacing="0" width="100%" background="main_menubg.gif" class="tabs_three">
+  <tr>
+	<td width="5">&nbsp;</td>
+	<td width="95" nowrap>
+		<a href="#" onMouseover="linkmenu(event)" onMouseout="delayhidemenu()"><img src="h_emule.gif" alt="[eMuleAppName] | [WebControl]"><br />
+			[WebControl]</a>
+	</td>
+	<td width>&nbsp;</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=[Session]&amp;w=transfer">
+  			<img src="h_transfer.gif"><br />
+  			[Transfer]
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=[Session]&amp;w=kad">
+  			<img src="h_kad.gif"><br />
+  			[Kad]
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=[Session]&amp;w=server">
+  			<img src="h_server.gif"><br />
+  			[Server]
+  		</a>
+  	</td>
+	<td width="9%" align="center" valign="top"><br />
+  		<a href="?ses=[Session]&amp;w=search">
+
+
     location.href = "?ses=[Session]&w=[wCommand]";
 }
 
